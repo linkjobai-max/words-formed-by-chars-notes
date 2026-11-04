@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Remove Palindromic Subsequences (LeetCode 1332): The Answer Is Never More Than Two</title><meta name="description" content="LeetCode 1332 explained: with only the letters a and b, one removal of all a&#x27;s and one of all b&#x27;s always works."><style>body{max-width:720px;margin:2rem auto;padding:0 1rem;font:17px/1.6 system-ui,sans-serif;color:#222}pre{background:#f4f4f4;padding:1rem;overflow:auto}</style></head><body><h1>Remove Palindromic Subsequences (LeetCode 1332): The Answer Is Never More Than Two</h1>
+<p>The string contains only <code>a</code> and <code>b</code>. In one step you may delete any palindromic subsequence. Return the minimum number of steps to empty the string.</p>
+<h2>The trick in the wording</h2>
+<p>A subsequence does not have to be contiguous. All the a's together form a palindrome, and so do all the b's. So two steps always suffice. If the whole string is already a palindrome, one step is enough. An empty string needs zero.</p>
+<pre><code class="language-python">def remove_palindrome_sub(s):
+    if not s:
+        return 0
+    return 1 if s == s[::-1] else 2</code></pre>
+<h2>How to present it</h2>
+<p>Many candidates start writing a DP. Pause and ask what subsequence means here; spotting that the alphabet has two letters turns the problem into a palindrome check. Interviewers like hearing that reasoning before any code.</p>
+<p>For more practice reading problem statements carefully under time pressure, try this <a href="https://www.linkjob.ai/coding-interview-copilot/">AI help for online coding assessments</a>.</p>
+<p><em>Disclosure: I work on Linkjob AI.</em></p>
+</body></html>
