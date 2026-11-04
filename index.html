@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Find Words That Can Be Formed by Characters (LeetCode 1160): Count, Then Compare</title><meta name="description" content="Find Words That Can Be Formed by Characters solved with a 26-slot frequency count, with edge cases and interview talking points."><style>body{max-width:720px;margin:2rem auto;padding:0 1rem;font:17px/1.6 system-ui,sans-serif;color:#222}pre{background:#f4f4f4;padding:1rem;overflow:auto}</style></head><body><h1>Find Words That Can Be Formed by Characters (LeetCode 1160): Count, Then Compare</h1>
+<p>You get a list of words and a string chars. A word is good if it can be built from chars, using each character at most once per word. Return the total length of all good words.</p>
+<h2>Frequency arrays</h2>
+<p>Count chars once into 26 slots. For each word, count its letters and check that no slot exceeds the budget. Because the budget is reused for every word, never mutate the original counts.</p>
+<pre><code class="language-python">from collections import Counter
+
+def countCharacters(words, chars):
+    have = Counter(chars)
+    total = 0
+    for w in words:
+        need = Counter(w)
+        if all(have[ch] &gt;= k for ch, k in need.items()):
+            total += len(w)
+    return total
+</code></pre>
+<p>Time is O(total letters across words plus len(chars)). Extra space is O(1) since the alphabet is fixed at 26.</p>
+<h2>Small wins worth mentioning</h2>
+<ul><li>Skip a word immediately if it is longer than chars.</li>
+<li>With plain lists of 26 ints you avoid hashing and can bail out on the first letter that runs short.</li>
+<li>This is the same check as Ransom Note (LeetCode 383); saying so shows pattern recognition.</li></ul>
+<p>Practising how you narrate these frequency-count checks helps a lot in live rounds; an <a href="https://www.linkjob.ai/">AI interview assistant</a> like Linkjob AI can give you that practice (disclosure: I work on Linkjob AI).</p>
+</body></html>
